@@ -70,7 +70,7 @@ const Navigation: React.FC<NavigationProps> = ({ scrollToSection }) => {
 
           {/* 💻 Liens Desktop */}
           <div className="hidden md:flex space-x-10">
-            {links.map((link, index) => (
+{links.map((link) => (
               <motion.button
                 key={link.target}
                 onClick={() => scrollToSection(link.target)}
@@ -124,7 +124,7 @@ const Navigation: React.FC<NavigationProps> = ({ scrollToSection }) => {
             className="md:hidden bg-white/95 backdrop-blur-lg border-t border-gray-200 shadow-xl"
           >
             <div className="px-5 py-6 space-y-4">
-              {links.map((link, index) => (
+{links.map((link) => (
                 <motion.button
                   key={link.target}
                   onClick={() => {

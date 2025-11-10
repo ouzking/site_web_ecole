@@ -134,7 +134,7 @@ const ContactSection: React.FC = () => {
                     type={input.type}
                     name={input.name}
                     placeholder={input.placeholder}
-                    value={(formData as any)[input.name]}
+value={formData[input.name as keyof typeof formData]}
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 transition"

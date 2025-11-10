@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Building2, BookOpen, Monitor, Palette, UtensilsCrossed, FlaskConical, Dumbbell } from "lucide-react";
+import { Building2, Monitor, UtensilsCrossed, Dumbbell } from "lucide-react";
 
 interface Activite {
   titre: string;

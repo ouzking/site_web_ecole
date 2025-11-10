@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, Star, Sparkles } from "lucide-react";
+import { ChevronRight, Sparkles } from "lucide-react";
 
 interface HeroProps {
   scrollToSection: (sectionId: string) => void;
