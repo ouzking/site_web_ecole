@@ -34,8 +34,8 @@ const App: React.FC = () => {
       {/* --- Section d'accueil (Hero) --- */}
       <HeroSection scrollToSection={scrollToSection} />
 
-      {/* --- Section À propos --- */}
-      <AboutSection />
+      {/* --- Section À propos (avec scroll activé) --- */}
+      <AboutSection scrollToSection={scrollToSection} />
 
       {/* --- Section Niveaux d’enseignement --- */}
       <NiveauxSection
