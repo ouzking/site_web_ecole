@@ -1,27 +1,36 @@
 import React, { useRef, useEffect } from "react";
-import { motion, useAnimation, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+  animate,
+} from "framer-motion";
 import { Users, GraduationCap, Award, Sparkles } from "lucide-react";
 
-const AnimatedNumber: React.FC<{ value: number; duration?: number }> = ({ value, duration = 2 }) => {
-  const controls = useAnimation();
-const ref = useRef<HTMLSpanElement>(null);
-const inView = useInView(ref, { once: true });
+// 🔢 Composant qui gère l’animation d’un nombre progressif
+const AnimatedNumber: React.FC<{ value: number; duration?: number }> = ({
+  value,
+  duration = 2,
+}) => {
+  const ref = useRef<HTMLSpanElement>(null);
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.floor(latest));
+  const inView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (inView) {
-      controls.start({
-        x: [0, 1], // simple dummy animation
-        transition: { duration },
+      // Démarre l’animation du compteur quand visible
+      const animation = animate(count, value, {
+        duration,
+        ease: "easeOut",
       });
-const animation = animate(count, value, { duration, ease: "easeOut" });
       return () => animation.stop();
     }
-  }, [inView, value, controls, count, duration]);
+  }, [inView, value, count, duration]);
 
   return (
-    <motion.span className="relative inline-block">
+    <motion.span ref={ref} className="relative inline-block">
       <motion.span>{rounded}</motion.span>
       <motion.span
         className="absolute -top-3 -right-3 text-blue-200"
@@ -58,7 +67,11 @@ const Stats: React.FC = () => {
   ];
 
   return (
-    <section id="stats" className="relative py-28 overflow-hidden bg-gradient-to-b from-white via-blue-50/40 to-white">
+    <section
+      id="stats"
+      className="relative py-28 overflow-hidden bg-gradient-to-b from-white via-blue-50/40 to-white"
+    >
+      {/* 💠 Effet de fond doux */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-blue-400/20 blur-[160px] rounded-full -translate-x-1/2 -translate-y-1/2" />
       </div>
@@ -95,7 +108,9 @@ const Stats: React.FC = () => {
                   <AnimatedNumber value={stat.value} />+
                 </div>
 
-                <div className="text-blue-100 text-lg font-medium tracking-wide">{stat.label}</div>
+                <div className="text-blue-100 text-lg font-medium tracking-wide">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </div>
